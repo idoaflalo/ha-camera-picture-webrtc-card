@@ -3,7 +3,6 @@ import { LitElement, html, css } from "https://unpkg.com/lit-element@2.0.1/lit-e
 class CameraPictureWebRTCcard extends LitElement {
   static get properties() {
     return {
-      hass: {},
       config: {},
       helpers: {},
       live: false,
@@ -17,7 +16,14 @@ class CameraPictureWebRTCcard extends LitElement {
       window.liveCameraCallback = [];
     }
     this._callback = null;
+    this._element = null;
     this.loadCardHelpers();
+  }
+
+  attributeChangedCallback(name, oldValue, newValue) {
+    if (name == "hass" && this._element) {
+      this._element.hass = newValue;
+    }
   }
 
   render() {
