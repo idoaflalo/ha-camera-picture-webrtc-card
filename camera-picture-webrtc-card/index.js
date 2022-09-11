@@ -20,9 +20,9 @@ class CameraPictureWebRTCcard extends LitElement {
     this.loadCardHelpers();
   }
 
-  attributeChangedCallback(name, oldValue, newValue) {
-    if (name == "hass" && this._element) {
-      this._element.hass = newValue;
+  attributeChangedCallback(name) {
+    if (name == "hass" && !this.hass) {
+      this.requestUpdate();
     }
   }
 
